@@ -32,15 +32,14 @@ export default function App() {
       <form>
         <label>
           <span>SKILL</span>
-          <input 
-            name="skill"
-            value = {state.skill}
-            onChange={handleChange}
-          />
+          <input name="skill"/>
         </label>
         <label>
           <span>LEVEL</span>
-          <select name="level">
+          <select 
+            name="level"
+            value = {state.skill}
+            onChange={handleChange}>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
