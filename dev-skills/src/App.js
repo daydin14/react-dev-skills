@@ -3,12 +3,21 @@ import "./styles.css";
 
 export default function App() {
   const [state, setState] = useState({
-    skills: [{ skill: "JavaScript", level: "4" }]
+    skills: [{ skill: "JavaScript", level: "4" }],
+    skill: "",
+    level: "3"
   });
+
+  function handleChange(e) {
+    setState({
+      ...state,
+      skill: e.target.value
+    });
+  };
 
   function handleSubmit() {
     alert("ADD SKILL CLICKED");
-  }
+  };
 
   return (
     <section>
@@ -23,7 +32,11 @@ export default function App() {
       <form>
         <label>
           <span>SKILL</span>
-          <input name="skill" />
+          <input 
+            name="skill"
+            value = {state.skill}
+            onChange={handleChange}
+          />
         </label>
         <label>
           <span>LEVEL</span>
