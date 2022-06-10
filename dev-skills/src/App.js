@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./styles.css";
 
-function App() {
+export default function App() {
+  const [state, setState] = useState({
+    skills: [{ skill: "JavaScript", level: "4" }]
+  });
+
+  function handleSubmit() {
+    alert("ADD SKILL CLICKED");
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section>
+      <h2>DEV SKILLS</h2>
+      <hr />
+      {state.skills.map((s) => (
+        <article key={s.skill}>
+          <div>{s.skill}</div> <div>{s.level}</div>
+        </article>
+      ))}
+      <hr />
+      <form>
+        <label>
+          <span>SKILL</span>
+          <input name="skill" />
+        </label>
+        <label>
+          <span>LEVEL</span>
+          <select name="level">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </label>
+        <button>ADD SKILL</button>
+      </form>
+    </section>
   );
 }
-
-export default App;
