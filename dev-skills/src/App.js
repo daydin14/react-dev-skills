@@ -17,6 +17,16 @@ export default function App() {
 
   function handleSubmit() {
     alert("ADD SKILL CLICKED");
+
+    const newSkill = {
+      skill: state.skill,
+      level: skill.level
+    };
+    setState({
+      skills: [...state.skills, newSkill],
+      skill: "",
+      level: "3"
+    });
   };
 
   return (
