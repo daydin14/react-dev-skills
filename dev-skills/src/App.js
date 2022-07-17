@@ -5,22 +5,22 @@ export default function App() {
   const [state, setState] = useState({
     skills: [{ skill: "JavaScript", level: "4" }],
     skill: "",
-    level: "3"
+    level: "3",
   });
 
   function handleChange(e) {
     setState({
       ...state,
-      skill: e.target.value
+      [e.target.name]: e.target.value
     });
   };
 
-  function handleSubmit() {
-    alert("ADD SKILL CLICKED");
-
+  function handleSubmit(e) {
+    // alert("ADD SKILL CLICKED");
+    e.preventDefault();
     const newSkill = {
       skill: state.skill,
-      level: skill.level
+      level: state.level
     };
     setState({
       skills: [...state.skills, newSkill],
@@ -39,17 +39,15 @@ export default function App() {
         </article>
       ))}
       <hr />
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>
           <span>SKILL</span>
-          <input name="skill"/>
+          <input name="skill" value={state.skill} onChange={handleChange} />
         </label>
         <label>
           <span>LEVEL</span>
           <select 
-            name="level"
-            value = {state.skill}
-            onChange={handleChange}>
+            name="level" value = {state.level} onChange={handleChange}>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
